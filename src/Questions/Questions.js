@@ -17,6 +17,7 @@ const Questions = () => {
             <Question
                 selectedQues={selectedQues}
                 setSelectedQues={setSelectedQues}
+                questions={questions}
             />
         </div>
     );
