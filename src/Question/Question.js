@@ -8,7 +8,7 @@ const Question = ({
     selectedChoices,
     setSelectedChoices
 }) => {
-    const { id, question_text, question_type } = selectedQues;
+    const { question_text, question_type } = selectedQues;
 
     const handleNext = () => {
         setSelectedQues(questions[question_type - 1 + 1]);
@@ -32,6 +32,7 @@ const Question = ({
                 <Choices
                     selectedQues={selectedQues}
                     setSelectedChoices={setSelectedChoices}
+                    selectedChoices={selectedChoices}
                 />
             </div>
             <div>

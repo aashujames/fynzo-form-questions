@@ -5,12 +5,7 @@ import Question from "../Question/Question";
 const Questions = () => {
     const [questions, setQuestions] = useState(data.questions);
     const [selectedQues, setSelectedQues] = useState(questions[0]);
-    const [selectedChoices, setSelectedChoices] = useState([
-        {
-            questionId: "",
-            choiceId: ""
-        }
-    ]);
+    const [selectedChoices, setSelectedChoices] = useState([]);
     return (
         <div>
             <Question

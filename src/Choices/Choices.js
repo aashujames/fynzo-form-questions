@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Choices = ({ selectedQues, setSelectedChoices }) => {
-    const { question_type: type } = selectedQues;
+const Choices = ({ selectedQues, setSelectedChoices, selectedChoices }) => {
+    const [textInput, setTextInput] = useState("");
+    const [fileInput, setFileInput] = useState("");
+    const { id, question_type: type } = selectedQues;
 
     const handleChoice = (choiceId) => {
-        console.log(choiceId);
         setSelectedChoices((selectedChoices) => [
             ...selectedChoices,
             { questionId: selectedQues.id, choiceId }
         ]);
+    };
+
+    const searchChoice = () => {
+        if (selectedChoices.length > 0) {
+            const choice = selectedChoices.find((ele) => ele.questionId === id);
+            return choice?.choiceId;
+        }
     };
 
     if (type === 1) {
@@ -18,6 +26,7 @@ const Choices = ({ selectedQues, setSelectedChoices }) => {
                     <div key={item.id}>
                         <label>
                             <input
+                                defaultChecked={searchChoice() === item.id}
                                 type="radio"
                                 onChange={() => handleChoice(item.id)}
                             />
@@ -32,8 +41,13 @@ const Choices = ({ selectedQues, setSelectedChoices }) => {
     if (type === 2) {
         return (
             <div>
-                <select onChange={(e) => handleChoice(e.target.value)}>
-                    <option>Choose choice</option>
+                <select
+                    onChange={(e) => handleChoice(e.target.value)}
+                    defaultValue={selectedQues.choices.some(
+                        (item) => item.id === searchChoice()
+                    )}
+                >
+                    <option disabled>Choose choice</option>
                     {selectedQues.choices.map((item) => (
                         <option value={item.id} key={item.id}>
                             {item.choice_text}
@@ -51,6 +65,7 @@ const Choices = ({ selectedQues, setSelectedChoices }) => {
                     <div key={item.id}>
                         <label>
                             <input
+                                defaultChecked={searchChoice() === item.id}
                                 type="checkbox"
                                 onChange={() => handleChoice(item.id)}
                             />
@@ -58,6 +73,29 @@ const Choices = ({ selectedQues, setSelectedChoices }) => {
                         </label>
                     </div>
                 ))}
+            </div>
+        );
+    }
+    if (type === 4) {
+        return (
+            <div>
+                <input
+                    type="text"
+                    value={textInput}
+                    onChange={(e) => setTextInput(e.target.value)}
+                />
+            </div>
+        );
+    }
+
+    if (type === 5) {
+        return (
+            <div>
+                <input
+                    type="file"
+                    value={fileInput}
+                    onChange={(e) => setFileInput(e.target.value)}
+                />
             </div>
         );
     }
