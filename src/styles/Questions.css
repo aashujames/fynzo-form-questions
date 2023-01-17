@@ -1,0 +1,6 @@
+.top-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    height: 40vh;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Choices from "../Choices/Choices";
+import "../styles/Question.css";
 
 const Question = ({
     questions,
@@ -19,16 +20,16 @@ const Question = ({
     };
 
     return (
-        <>
+        <div className="container">
             <div>
-                <div>Question {question_type}</div>
+                <div className="question-text">Question {question_type}</div>
                 {selectedQues.choices ? (
-                    <div>MCQ - {question_text}</div>
+                    <div className="question-text">MCQ - {question_text}</div>
                 ) : (
-                    <div>{question_text}</div>
+                    <div className="question-text">{question_text}</div>
                 )}
             </div>
-            <div>
+            <div className="choices">
                 <Choices
                     selectedQues={selectedQues}
                     setSelectedChoices={setSelectedChoices}
@@ -43,7 +44,7 @@ const Question = ({
                 )}
                 <button onClick={handleNext}>Next</button>
             </div>
-        </>
+        </div>
     );
 };
 

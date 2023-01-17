@@ -1,0 +1,39 @@
+.main1 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.container-radio {
+    border: 1px solid #20fb57;
+    padding: 8px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+}
+
+.label-radio {
+    cursor: pointer;
+    color: #20fb57;
+    margin-left: 8px;
+}
+
+.input-radio {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.main2 {
+    height: 30%;
+}
+
+select {
+    width: 100%;
+    border: 1px solid #20fb57;
+    padding: 8px 0;
+    cursor: pointer;
+    border-radius: 7px;
+}

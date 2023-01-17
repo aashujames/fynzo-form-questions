@@ -2,7 +2,7 @@ import Questions from "./Questions/Questions";
 
 function App() {
     return (
-        <div>
+        <div className="App">
             <Questions />
         </div>
     );

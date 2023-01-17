@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/Choices.css";
 
 const Choices = ({ selectedQues, setSelectedChoices, selectedChoices }) => {
     const [textInput, setTextInput] = useState("");
@@ -21,17 +22,19 @@ const Choices = ({ selectedQues, setSelectedChoices, selectedChoices }) => {
 
     if (type === 1) {
         return (
-            <div>
+            <div className="main1">
                 {selectedQues.choices.map((item) => (
-                    <div key={item.id}>
-                        <label>
-                            <input
-                                defaultChecked={searchChoice() === item.id}
-                                type="radio"
-                                onChange={() => handleChoice(item.id)}
-                            />
+                    <div key={item.id} className="container-radio">
+                        <label className="label-radio" htmlFor={item.id}>
                             {item.choice_text}
                         </label>
+                        <input
+                            className="input-radio"
+                            id={item.id}
+                            defaultChecked={searchChoice() === item.id}
+                            type="radio"
+                            onChange={() => handleChoice(item.id)}
+                        />
                     </div>
                 ))}
             </div>
@@ -40,8 +43,9 @@ const Choices = ({ selectedQues, setSelectedChoices, selectedChoices }) => {
 
     if (type === 2) {
         return (
-            <div>
+            <div className="main2">
                 <select
+                    className="select"
                     onChange={(e) => handleChoice(e.target.value)}
                     defaultValue={selectedQues.choices.some(
                         (item) => item.id === searchChoice()
@@ -60,17 +64,19 @@ const Choices = ({ selectedQues, setSelectedChoices, selectedChoices }) => {
 
     if (type === 3) {
         return (
-            <div>
+            <div className="main1">
                 {selectedQues.choices.map((item) => (
-                    <div key={item.id}>
-                        <label>
-                            <input
-                                defaultChecked={searchChoice() === item.id}
-                                type="checkbox"
-                                onChange={() => handleChoice(item.id)}
-                            />
+                    <div key={item.id} className="container-radio">
+                        <label className="label-radio" htmlFor={item.id}>
                             {item.choice_text}
                         </label>
+                        <input
+                            className="input-checkbox"
+                            id={item.id}
+                            defaultChecked={searchChoice() === item.id}
+                            type="checkbox"
+                            onChange={() => handleChoice(item.id)}
+                        />
                     </div>
                 ))}
             </div>
