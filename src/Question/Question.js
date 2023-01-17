@@ -1,6 +1,13 @@
 import React from "react";
+import Choices from "../Choices/Choices";
 
-const Question = ({ questions, selectedQues, setSelectedQues }) => {
+const Question = ({
+    questions,
+    selectedQues,
+    setSelectedQues,
+    selectedChoices,
+    setSelectedChoices
+}) => {
     const { id, question_text, question_type } = selectedQues;
 
     const handleNext = () => {
@@ -20,6 +27,12 @@ const Question = ({ questions, selectedQues, setSelectedQues }) => {
                 ) : (
                     <div>{question_text}</div>
                 )}
+            </div>
+            <div>
+                <Choices
+                    selectedQues={selectedQues}
+                    setSelectedChoices={setSelectedChoices}
+                />
             </div>
             <div>
                 {question_type === 1 ? (
